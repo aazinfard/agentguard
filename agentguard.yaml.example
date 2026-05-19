@@ -1,0 +1,25 @@
+# AgentGuard Configuration
+mimo:
+  api_key: ${MIMO_API_KEY}
+  model: mimo-v2.5-pro
+  base_url: https://api.xiaomimimo.com/v1
+
+agents:
+  scanner:
+    enabled: true
+    extensions: [".py", ".js", ".ts", ".sol", ".go", ".rs"]
+  analyzer:
+    enabled: true
+    chain_of_thought: true
+    temperature: 0.1
+  test_generator:
+    enabled: true
+    frameworks: [pytest, jest]
+
+rules:
+  severity: [critical, high, medium]
+  categories: [injection, auth, crypto, access-control, xss]
+
+report:
+  format: html
+  output: ./agentguard-report.html
